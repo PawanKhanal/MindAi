@@ -23,7 +23,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include routers
 app.include_router(documents.router, prefix="/api/v1/documents", tags=["Document Ingestion"])
 app.include_router(chat.router, prefix="/api/v1/chat", tags=["Conversational RAG"])
 

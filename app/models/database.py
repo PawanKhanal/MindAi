@@ -22,8 +22,8 @@ class DocumentChunk(Base):
     id = Column(String, primary_key=True, index=True)
     document_id = Column(String, index=True)
     chunk_text = Column(Text)
-    chunk_index = Column(Integer)  # Changed to Integer for proper ordering
-    chunk_metadata = Column(JSON)  # Changed from 'metadata' to 'chunk_metadata'
+    chunk_index = Column(Integer) 
+    chunk_metadata = Column(JSON) 
     embedding_id = Column(String)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
@@ -38,7 +38,6 @@ class InterviewBooking(Base):
     session_id = Column(String, index=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
-# Database setup
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./rag_system.db")
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

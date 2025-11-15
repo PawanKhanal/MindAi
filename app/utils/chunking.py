@@ -11,7 +11,7 @@ class ChunkingStrategy:
         current_size = 0
         
         for word in words:
-            word_size = len(word) + 1  # +1 for space
+            word_size = len(word) + 1  
             
             if current_size + word_size > chunk_size and current_chunk:
                 # Save current chunk
@@ -36,7 +36,6 @@ class ChunkingStrategy:
     @staticmethod
     def semantic_chunking(text: str, chunk_size: int = 512) -> List[Dict[str, Any]]:
         """Semantic chunking using sentence boundaries"""
-        # Split by sentences (simple approach)
         sentences = re.split(r'[.!?]+', text)
         sentences = [s.strip() for s in sentences if s.strip()]
         

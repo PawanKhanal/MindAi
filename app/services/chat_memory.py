@@ -16,7 +16,7 @@ class ChatMemory:
         """Add message to chat history"""
         key = f"chat_session:{session_id}"
         self.redis_client.rpush(key, json.dumps(message))
-        self.redis_client.expire(key, 3600)  # Expire after 1 hour
+        self.redis_client.expire(key, 3600) 
     
     def get_messages(self, session_id: str, limit: int = 10) -> List[Dict[str, str]]:
         """Get chat history for session"""

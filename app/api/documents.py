@@ -26,10 +26,8 @@ async def upload_document(
         )
     
     try:
-        # Read file content
         file_content = await file.read()
         
-        # Process document
         result = await ingestion_service.process_document(
             file_content, 
             file.filename, 

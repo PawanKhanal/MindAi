@@ -14,7 +14,6 @@ class EmbeddingService:
         self.vectorizer = None
         self.vocabulary = None
         
-        # Initialize Qdrant client
         self.qdrant_client = None
         self._initialize_qdrant()
     
@@ -28,11 +27,9 @@ class EmbeddingService:
                     api_key=os.getenv("QDRANT_API_KEY", "")
                 )
                 
-                # Test connection
                 self.qdrant_client.get_collections()
                 print("✅ Successfully connected to Qdrant")
                 
-                # Create collection if it doesn't exist
                 self._ensure_collection_exists()
                 break
                 
@@ -60,7 +57,6 @@ class EmbeddingService:
     
     def _build_vocabulary(self, texts: List[str]):
         """Build a simple vocabulary for embeddings"""
-        # Extract words from all texts
         all_words = set()
         for text in texts:
             words = re.findall(r'\b[a-zA-Z]{3,15}\b', text.lower())
@@ -76,7 +72,6 @@ class EmbeddingService:
         embeddings = []
         
         for text in texts:
-            # Initialize embedding vector
             embedding = [0.0] * self.vector_size
             
             if self.vocabulary:
@@ -91,7 +86,6 @@ class EmbeddingService:
                             embedding[idx] += 1.0 / max(1, word_count)
             
             else:
-                # Fallback: character frequency based embedding
                 text_lower = text.lower()
                 for i, char in enumerate(text_lower[:self.vector_size]):
                     if i < len(embedding):
@@ -112,7 +106,6 @@ class EmbeddingService:
         
         texts = [chunk["text"] for chunk in chunks]
         
-        # Build vocabulary on first run
         if self.vocabulary is None:
             self._build_vocabulary(texts)
         
@@ -138,7 +131,6 @@ class EmbeddingService:
             points.append(point)
         
         try:
-            # Upload to Qdrant
             self.qdrant_client.upsert(
                 collection_name="documents",
                 points=points
