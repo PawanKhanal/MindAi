@@ -1,6 +1,6 @@
-# PalmMind RAG Backend System
+# MindAi RAG Backend System
 
-PalmMind is a production-ready Retrieval-Augmented Generation (RAG) backend built with FastAPI.  
+MindAi is a production-ready Retrieval-Augmented Generation (RAG) backend built with FastAPI.  
 It supports document ingestion, semantic search, conversational chat, and automated interview booking — all using fully local infrastructure (Qdrant, Redis, Docker).
 
 
@@ -29,7 +29,7 @@ It supports document ingestion, semantic search, conversational chat, and automa
 ```bash
 # 1. Clone the repository
 git clone <repo-url>
-cd palmmind
+cd MindAi
 
 # 2. Copy env template and configure
 cp .env.example .env
@@ -63,7 +63,7 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ## ⚡ Manual Setup
 ```bash
 git clone <your-repo-url>
-cd palmmind
+cd MindAi
 
 python -m venv venv
 # Windows:
@@ -104,7 +104,7 @@ POST /api/v1/chat/book-interview
 
 ## 🏗️ Project Structure
 ```bash
-palmmind/
+MindAi/
   ├── app/
   │   ├── main.py              # 🚀 FastAPI entry point
   │   ├── api/                 # 🌐 API route handlers
@@ -137,4 +137,4 @@ docker compose ps
 - Only PDF/TXT files allowed  
 
 **3. API not responding**  
-- Check logs: docker compose logs -f palmmind-app
+- Check logs: docker compose logs -f MindAi-app
