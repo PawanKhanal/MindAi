@@ -1,6 +1,4 @@
 from pydantic import BaseModel, Field
-from typing import Optional, List, Dict, Any
-from datetime import datetime
 from enum import Enum
 
 class ChunkingStrategy(str, Enum):
@@ -23,7 +21,7 @@ class ChatMessage(BaseModel):
 class ChatResponse(BaseModel):
     response: str
     session_id: str
-    sources: List[str] = []
+    sources: list[str] = []
 
 class InterviewBooking(BaseModel):
     name: str

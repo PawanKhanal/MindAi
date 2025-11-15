@@ -1,6 +1,5 @@
 from typing import List, Dict, Any
 import os
-from datetime import datetime
 from app.services.embedding_service import EmbeddingService
 from app.services.chat_memory import ChatMemory
 from app.models.database import get_db, InterviewBooking as InterviewBookingModel

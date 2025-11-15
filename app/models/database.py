@@ -13,7 +13,7 @@ class Document(Base):
     filename = Column(String, index=True)
     file_path = Column(String)
     chunking_strategy = Column(String)
-    document_metadata = Column(JSON)  # Changed from 'metadata' to 'document_metadata'
+    document_metadata = Column(JSON)  
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
 class DocumentChunk(Base):

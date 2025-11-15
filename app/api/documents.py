@@ -1,8 +1,7 @@
 from fastapi import APIRouter, UploadFile, File, Form, HTTPException
-from typing import Optional
 import os
 
-from app.models.schemas import DocumentUpload, DocumentResponse, ChunkingStrategy
+from app.models.schemas import DocumentResponse, ChunkingStrategy
 from app.services.document_ingestion import DocumentIngestionService
 
 router = APIRouter()

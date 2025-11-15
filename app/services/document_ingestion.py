@@ -1,5 +1,5 @@
 import uuid
-from typing import List, Dict, Any
+from typing import Any
 import os
 
 from app.utils.file_processing import extract_text_from_pdf, extract_text_from_txt, save_uploaded_file
@@ -11,7 +11,7 @@ class DocumentIngestionService:
     def __init__(self):
         self.embedding_service = EmbeddingService()
     
-    async def process_document(self, file_content: bytes, filename: str, chunking_strategy: str) -> Dict[str, Any]:
+    async def process_document(self, file_content: bytes, filename: str, chunking_strategy: str) -> dict[str, Any]:
         """Process uploaded document"""
         
         file_path, file_id = save_uploaded_file(file_content, filename)

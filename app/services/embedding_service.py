@@ -3,7 +3,7 @@ from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct
 import uuid
 import os
-from typing import List, Dict, Any
+from typing import Any
 import time
 from sklearn.feature_extraction.text import TfidfVectorizer
 import re
@@ -55,7 +55,7 @@ class EmbeddingService:
             )
             print("✅ Documents collection created")
     
-    def _build_vocabulary(self, texts: List[str]):
+    def _build_vocabulary(self, texts: list[str]):
         """Build a simple vocabulary for embeddings"""
         all_words = set()
         for text in texts:
@@ -67,7 +67,7 @@ class EmbeddingService:
         self.vocabulary = {word: i for i, word in enumerate(word_list)}
         print(f"✅ Built vocabulary with {len(self.vocabulary)} words")
     
-    def generate_embeddings(self, texts: List[str]) -> List[List[float]]:
+    def generate_embeddings(self, texts: list[str]) -> list[list[float]]:
         """Generate simple word frequency based embeddings"""
         embeddings = []
         
@@ -98,7 +98,7 @@ class EmbeddingService:
         
         return embeddings
     
-    def store_embeddings(self, chunks: List[Dict[str, Any]], document_id: str) -> List[str]:
+    def store_embeddings(self, chunks: list[dict[str, Any]], document_id: str) -> list[str]:
         """Store embeddings in Qdrant and return embedding IDs"""
         if self.qdrant_client is None:
             print("⚠️ Qdrant not available, skipping embedding storage")
@@ -141,7 +141,7 @@ class EmbeddingService:
         
         return embedding_ids
     
-    def search_similar(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
+    def search_similar(self, query: str, top_k: int = 5) -> list[dict[str, Any]]:
         """Search for similar documents"""
         if self.qdrant_client is None:
             print("⚠️ Qdrant not available, returning empty results")

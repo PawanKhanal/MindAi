@@ -1,9 +1,9 @@
-from typing import List, Dict, Any
+from typing import Any
 import re
 
 class ChunkingStrategy:
     @staticmethod
-    def fixed_size_chunking(text: str, chunk_size: int = 512, chunk_overlap: int = 50) -> List[Dict[str, Any]]:
+    def fixed_size_chunking(text: str, chunk_size: int = 512, chunk_overlap: int = 50) -> list[dict[str, Any]]:
         """Fixed size chunking strategy without LangChain"""
         words = text.split()
         chunks = []
@@ -34,7 +34,7 @@ class ChunkingStrategy:
         return chunks
     
     @staticmethod
-    def semantic_chunking(text: str, chunk_size: int = 512) -> List[Dict[str, Any]]:
+    def semantic_chunking(text: str, chunk_size: int = 512) -> list[dict[str, Any]]:
         """Semantic chunking using sentence boundaries"""
         sentences = re.split(r'[.!?]+', text)
         sentences = [s.strip() for s in sentences if s.strip()]
